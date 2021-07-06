@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+  compileSdkVersion COMPILE_SDK_VERSION
+  buildToolsVersion BUILD_TOOLS_VERSION
+
+  defaultConfig {
+    minSdkVersion MIN_SDK_VERSION
+    targetSdkVersion TARGET_SDK_VERSION
+    versionName VERSION_NAME
+  }
+  lintOptions {
+    abortOnError false
+  }
+}
+
+dependencies {}
+
+publish {
+  groupId = GROUP
+  artifactId = ARTIFACT_ID
+  publishVersion = VERSION_NAME
+  desc = POM_DESCRIPTION
+  licences = [POM_LICENCE_NAME]
+  website = POM_URL
+}
+
+apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
