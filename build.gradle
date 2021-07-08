@@ -17,6 +17,7 @@ buildscript {
         classpath 'com.huawei.ohos:hap:2.4.2.7'
         classpath 'com.huawei.ohos:decctest:1.0.0.7'
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.1"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:3.3"
     }
 }
 
@@ -34,6 +35,9 @@ allprojects {
         }
         maven {
             url 'https://developer.huawei.com/repo/'
+        }
+        maven {
+            url 'https://mirrors.huaweicloud.com/repository/maven/'
         }
         jcenter()
     }
