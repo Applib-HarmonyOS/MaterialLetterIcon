@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    xmlns:app="style"
+    ohos:height="match_content"
+    ohos:width="match_parent"
+    ohos:orientation="horizontal"
+    ohos:padding="10vp">
+
+    <com.github.ivbaranov.mli.MaterialLetterIcon
+        ohos:id="$+id:icon"
+        ohos:width="70vp"
+        ohos:height="70vp"
+        ohos:margin="10vp"
+        ohos:right_margin="20vp"
+        app:mli_letters_number="3"
+        />
+
+    <TextField
+        ohos:id="$+id:text"
+        ohos:width="match_content"
+        ohos:height="match_content"
+        ohos:top_margin="25vp"
+        ohos:text_size="30vp"
+        />
+
+</DirectionalLayout>

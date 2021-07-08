@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical">
+
+    <Image
+        ohos:id="$+id:image_main"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:top_margin="150vp"
+        ohos:start_margin="40vp"
+        ohos:bottom_margin="20vp"
+        ohos:image_src="$media:cat"
+        />
+
+    <Button
+        ohos:id="$+id:button_main_countries"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:layout_alignment="horizontal_center"
+        ohos:background_element="$graphic:background_ability_main"
+        ohos:margin="20vp"
+        ohos:padding="5vp"
+        ohos:text="Countries"
+        ohos:text_size="30vp"
+        />
+
+    <Button
+        ohos:id="$+id:button_main_contacts"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:layout_alignment="horizontal_center"
+        ohos:background_element="$graphic:background_ability_main"
+        ohos:padding="5vp"
+        ohos:text="Contacts"
+        ohos:text_size="30vp"
+        />
+</DirectionalLayout>
