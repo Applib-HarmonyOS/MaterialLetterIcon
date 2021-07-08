@@ -1,29 +1,21 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
-
-android {
-  compileSdkVersion COMPILE_SDK_VERSION
-  buildToolsVersion BUILD_TOOLS_VERSION
-
-  defaultConfig {
-    minSdkVersion MIN_SDK_VERSION
-    targetSdkVersion TARGET_SDK_VERSION
-    versionName VERSION_NAME
-  }
-  lintOptions {
-    abortOnError false
-  }
+apply plugin: 'com.huawei.ohos.library'
+ohos {
+    compileSdkVersion 5
+    defaultConfig {
+        compatibleSdkVersion 4
+    }
+    buildTypes {
+        release {
+            proguardOpt {
+                proguardEnabled false
+                rulesFiles 'proguard-rules.pro'
+            }
+        }
+    }
+    
 }
 
-dependencies {}
-
-publish {
-  groupId = GROUP
-  artifactId = ARTIFACT_ID
-  publishVersion = VERSION_NAME
-  desc = POM_DESCRIPTION
-  licences = [POM_LICENCE_NAME]
-  website = POM_URL
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13'
 }
-
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
