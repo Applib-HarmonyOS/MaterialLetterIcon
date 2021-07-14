@@ -11,26 +11,44 @@ import ohos.agp.utils.Color;
 import ohos.agp.utils.Rect;
 import ohos.agp.utils.RectFloat;
 import ohos.app.Context;
-import ohos.global.resource.RawFileEntry;
-import ohos.global.resource.Resource;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import com.github.ivbaranov.mli.utils.Utils;
 
 /**
  * MaterialLetterIcon.
  */
 public class MaterialLetterIcon extends Component implements Component.DrawTask {
+    /**
+     * Use Shape.CIRCLE.
+     *
+     * @deprecated Use Shape.CIRCLE.
+     */
     @Deprecated public static final int SHAPE_CIRCLE = 0;
+    /**
+     * Use Shape.RECT.
+     *
+     * @deprecated Use Shape.RECT.
+     */
     @Deprecated public static final int SHAPE_RECT = 1;
+    /**
+     * Use Shape.ROUND_RECT.
+     *
+     * @deprecated Use Shape.ROUND_RECT.
+     */
     @Deprecated public static final int SHAPE_ROUND_RECT = 2;
+    /**
+     * Use Shape.TRIANGLE.
+     *
+     * @deprecated Use Shape.TRIANGLE.
+     */
     @Deprecated public static final int SHAPE_TRIANGLE = 3;
 
     /**
      * Shape of icon.
      */
-    public enum Shape { CIRCLE, RECT, ROUND_RECT, TRIANGLE }
+    public enum Shape {
+        CIRCLE, RECT, ROUND_RECT, TRIANGLE;
+    }
+
     private static final Shape DEFAULT_SHAPE = Shape.CIRCLE;
     private static final Color DEFAULT_SHAPE_COLOR = Color.BLACK;
     private static final int DEFAULT_BORDER_SIZE = 2;
@@ -78,22 +96,17 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
 
     public MaterialLetterIcon(Context context) {
         super(context);
-        init(context, null, 0, 0);
+        init(context, null);
     }
 
     public MaterialLetterIcon(Context context, AttrSet attrs) {
         super(context, attrs);
-        init(context, attrs, 0, 0);
+        init(context, attrs);
     }
 
     public MaterialLetterIcon(Context context, AttrSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context, attrs, defStyleAttr, 0);
-    }
-
-    public MaterialLetterIcon(Context context, AttrSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr);
-        init(context, attrs, defStyleAttr, defStyleRes);
+        init(context, attrs);
     }
 
     /**
@@ -137,8 +150,9 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
     }
 
     /**
-     * Sets shape type. Please use {@code setShapeType(Shape shapeType)} instead.
+     * SetShapeType.
      *
+     * @deprecated Sets shape type. Please use {@code setShapeType(Shape shapeType)} instead.
      * @param type one of shapes to draw: {@code MaterialLetterIcon.SHAPE_CIRCLE}, {@code
      * MaterialLetterIcon.SHAPE_RECT}, {@code MaterialLetterIcon.SHAPE_ROUND_RECT}, {@code
      * MaterialLetterIcon.SHAPE_TRIANGLE}
@@ -176,7 +190,7 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
         this.mOriginalLetter = string;
         int desireLength;
         if (mInitials) {
-            String initials[] = string.split("\\s+");
+            String[] initials = string.split("\\s+");
             StringBuilder initialsPlain = new StringBuilder(mLettersNumber);
             for (String initial : initials) {
                 initialsPlain.append(initial.substring(0, 1));
@@ -358,25 +372,7 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
 
         public Builder(Context context) {
             this.context = context;
-            this.mLetterTypeface = getFont(DEFAULT_FONT_PATH);
-        }
-
-        private Font getFont(String fontfamily) {
-            byte[] buffer = null;
-            int bytesRead = 0;
-            FileOutputStream fileOutputStream = null;
-            File file = new File(context.getCacheDir(), fontfamily);
-            RawFileEntry rawFileEntry = context.getResourceManager().getRawFileEntry(fontfamily);
-            try (Resource resource = rawFileEntry.openRawFile()) {
-                buffer = new byte[(int) rawFileEntry.openRawFileDescriptor().getFileSize()];
-                bytesRead = resource.read(buffer);
-                fileOutputStream = new FileOutputStream(file);
-                fileOutputStream.write(buffer, 0, bytesRead);
-                fileOutputStream.close();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-            return new Font.Builder(file).build();
+            this.mLetterTypeface = Utils.getFont(context, DEFAULT_FONT_PATH);
         }
 
         public Builder shapeColor(Color color) {
@@ -384,6 +380,13 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
             return this;
         }
 
+        /**
+         * ShapeType to be used.
+         *
+         * @deprecated Sets shape type. Please use {@code ShapeType(Shape shapeType)} instead.
+         * @param type type
+         * @return Builder
+         */
         @Deprecated public Builder shapeType(int type) {
             this.mShapeType = Shape.values()[0];
             return this;
@@ -497,7 +500,7 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
      * <li>round-rect y radius = 2 dp</li>
      * </ul>
      */
-    private void init(Context context, AttrSet attrs, int defStyleAttr, int defStyleRes) {
+    private void init(Context context, AttrSet attrs) {
         this.context = context;
         mBorder = DEFAULT_BORDER;
         mBorderColor = DEFAULT_BORDER_COLOR;
@@ -519,29 +522,11 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
         mBorderPaint.setAntiAlias(true);
         mLetterPaint = new Paint();
         mLetterPaint.setAntiAlias(true);
-        mLetterPaint.setFont(getFont(DEFAULT_FONT_PATH));
+        mLetterPaint.setFont(Utils.getFont(context, DEFAULT_FONT_PATH));
         if (attrs != null) {
             initAttributes(attrs);
         }
         addDrawTask(this::onDraw);
-    }
-
-    private Font getFont(String fontfamily) {
-        byte[] buffer = null;
-        int bytesRead = 0;
-        FileOutputStream fileOutputStream = null;
-        File file = new File(context.getCacheDir(), fontfamily);
-        RawFileEntry rawFileEntry = context.getResourceManager().getRawFileEntry(fontfamily);
-        try (Resource resource = rawFileEntry.openRawFile()) {
-            buffer = new byte[(int) rawFileEntry.openRawFileDescriptor().getFileSize()];
-            bytesRead = resource.read(buffer);
-            fileOutputStream = new FileOutputStream(file);
-            fileOutputStream.write(buffer, 0, bytesRead);
-            fileOutputStream.close();
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
-        return new Font.Builder(file).build();
     }
 
     private void checkBorderAttr(AttrSet attrs) {
@@ -614,9 +599,9 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
 
     @Override
     public void onDraw(Component component, Canvas canvas) {
-        int viewWidthHalf = this.getEstimatedWidth() / 2;
-        int viewHeightHalf = this.getEstimatedHeight() / 2;
-        int radius;
+        float viewWidthHalf = (float) this.getEstimatedWidth() / 2;
+        float viewHeightHalf = (float) this.getEstimatedHeight() / 2;
+        float radius;
         if (viewWidthHalf > viewHeightHalf) {
             radius = viewHeightHalf;
         } else {
@@ -633,7 +618,7 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
                 drawRoundRect(canvas, this.getWidth(), this.getWidth());
                 break;
             case TRIANGLE:
-                drawTriangle(canvas);
+                drawTriangle(canvas, this.getWidth(), this.getWidth());
                 break;
             default:
                 drawCircle(canvas, radius, viewWidthHalf, viewHeightHalf);
@@ -645,22 +630,22 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
     }
 
 
-    private void drawCircle(Canvas canvas, int radius, int width, int height) {
+    private void drawCircle(Canvas canvas, float radius, float width, float height) {
         mShapePaint.setColor(mShapeColor);
         canvas.drawCircle(width, height, radius, mShapePaint);
         if (mBorder) {
             final int borderPx = AttrHelper.fp2px(mBorderSize, context);
             mBorderPaint.setColor(mBorderColor);
             mBorderPaint.setStrokeWidth(borderPx);
-            canvas.drawCircle(width, height, radius - borderPx / 2, mBorderPaint);
+            canvas.drawCircle(width, height, radius - (float) borderPx / 2, mBorderPaint);
         }
     }
 
-    private void drawRect(Canvas canvas, int width, int height) {
+    private void drawRect(Canvas canvas, float width, float height) {
         mShapePaint.setColor(mShapeColor);
         canvas.drawRect(0, 0, width, height, mShapePaint);
         if (mBorder) {
-            final int borderPx = AttrHelper.fp2px(mBorderSize, context);
+            final float borderPx = AttrHelper.fp2px(mBorderSize, context);
             mBorderPaint.setColor(mBorderColor);
             mBorderPaint.setStrokeWidth(borderPx);
             canvas.drawRect(borderPx / 2, borderPx / 2, width - borderPx / 2, height - borderPx / 2,
@@ -670,10 +655,10 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
 
     private void drawRoundRect(Canvas canvas, float width, float height) {
         mShapePaint.setColor(mShapeColor);
-        int rectRxPx = AttrHelper.fp2px(mRoundRectRx, context);
-        int rectRyPx = AttrHelper.fp2px(mRoundRectRy, context);
+        float rectRxPx = AttrHelper.fp2px(mRoundRectRx, context);
+        float rectRyPx = AttrHelper.fp2px(mRoundRectRy, context);
         if (mBorder) {
-            final int borderPx = AttrHelper.fp2px(mBorderSize, context);
+            final float borderPx = AttrHelper.fp2px(mBorderSize, context);
             canvas.drawRoundRect(
                     new RectFloat(borderPx / 2, borderPx / 2, width - borderPx / 2, height - borderPx / 2),
                     rectRxPx, rectRyPx, mShapePaint);
@@ -688,15 +673,15 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
         }
     }
 
-    private void drawTriangle(Canvas canvas) {
-        Rect bounds = canvas.getLocalClipBounds();
-        Path triangle = new Path();
-        triangle.moveTo(bounds.left + bounds.right / 10, bounds.bottom - bounds.bottom / 5);
-        triangle.lineTo(bounds.left + (bounds.right - bounds.left) / 2, bounds.top);
-        triangle.lineTo(bounds.right - bounds.right / 10, bounds.bottom - bounds.bottom / 5);
-        triangle.lineTo(bounds.left + bounds.right / 10, bounds.bottom - bounds.bottom / 5);
+    private void drawTriangle(Canvas canvas, float width, float height) {
         mShapePaint.setColor(mShapeColor);
         mShapePaint.setStyle(Paint.Style.FILL_STYLE);
+        Path triangle = new Path();
+        triangle.setFillType(Path.FillType.EVEN_ODD);
+        triangle.moveTo((float) 0.5 * width, 0);
+        triangle.lineTo(0, (float) 0.9 * height);
+        triangle.lineTo(width, (float) 0.9 * height);
+        triangle.lineTo((float) 0.5 * width, 0);
         canvas.drawPath(triangle, mShapePaint);
     }
 
@@ -704,7 +689,9 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
         mLetterPaint.setColor(mLetterColor);
         mLetterPaint.setTextSize(AttrHelper.fp2px(mLetterSize, context));
         Rect textBounds = mLetterPaint.getTextBounds(mLetter);
-        canvas.drawText(mLetterPaint, mLetter, cx - textBounds.getPreciseHorizontalCenter(), cy - textBounds.getPreciseVerticalCenter());
+        float x = cx - textBounds.getPreciseHorizontalCenter();
+        float y = cy - textBounds.getPreciseVerticalCenter();
+        canvas.drawText(mLetterPaint, mLetter, x, y);
     }
 
 }

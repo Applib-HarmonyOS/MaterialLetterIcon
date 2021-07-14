@@ -24,7 +24,6 @@ import ohos.agp.components.Attr;
 import ohos.agp.components.AttrSet;
 import ohos.agp.utils.Color;
 import ohos.app.Context;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Optional;
@@ -35,7 +34,7 @@ public class MaterialLetterIconTest {
     private MaterialLetterIcon materialLetterIcon;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         context = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext();
         attrSet = new AttrSet() {
             @Override
@@ -61,10 +60,6 @@ public class MaterialLetterIconTest {
 
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
-
     @Test
     public void testMaterialLetterIcon() {
         materialLetterIcon = new MaterialLetterIcon(context);
@@ -80,12 +75,6 @@ public class MaterialLetterIconTest {
     @Test
     public void testMaterialLetterIconDefStyleAttr() {
         materialLetterIcon = new MaterialLetterIcon(context, attrSet, 0);
-        assertNotNull(materialLetterIcon);
-    }
-
-    @Test
-    public void testMaterialLetterIconDefStyleRes() {
-        materialLetterIcon = new MaterialLetterIcon(context, attrSet, 0, 0);
         assertNotNull(materialLetterIcon);
     }
 

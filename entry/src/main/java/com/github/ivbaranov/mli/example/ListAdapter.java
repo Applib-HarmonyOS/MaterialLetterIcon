@@ -40,8 +40,7 @@ public class ListAdapter extends BaseItemProvider {
     private int mType;
     private Context context;
     private List<Item> itemList;
-    private ItemClickListener clickListener;
-    private Color colors[] = {Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.GRAY};
+    private Color[] colors = {Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.GRAY};
 
     /**
      * ItemAdapter.
@@ -90,6 +89,7 @@ public class ListAdapter extends BaseItemProvider {
             default:
                 viewHolder.placeIcon.setLettersNumber(DEFAULT_LETTERS_NUMBER);
         }
+        viewHolder.placeIcon.setShapeType(MaterialLetterIcon.Shape.TRIANGLE);
         viewHolder.placeIcon.setShapeColor(colors[index % colors.length]);
         viewHolder.placeName.setText(itemList.get(index).getName());
         viewHolder.placeIcon.setLetter(itemList.get(index).getName());

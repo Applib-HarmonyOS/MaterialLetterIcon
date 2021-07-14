@@ -31,14 +31,11 @@ import java.util.List;
 public class CountryAbilitySlice extends AbilitySlice {
 
     private static final int COUNTRIES = 0;
-    private static final String[] countries = {
-            "Albania", "Australia", "Belgium", "Canada", "China", "Dominica", "Egypt", "Estonia",
-            "Finland", "France", "Germany", "Honduras", "Italy", "Japan", "Madagascar", "Netherlands",
-            "Norway", "Panama", "Portugal", "Romania", "Russia", "Slovakia", "Vatican", "Zimbabwe"
+    private static final String[] COUNTRIES_NAME = {
+        "Albania", "Australia", "Belgium", "Canada", "China", "Dominica", "Egypt", "Estonia",
+        "Finland", "France", "Germany", "Honduras", "Italy", "Japan", "Madagascar", "Netherlands",
+        "Norway", "Panama", "Portugal", "Romania", "Russia", "Slovakia", "Vatican", "Zimbabwe"
     };
-
-    private List<Item> itemList;
-    private ListAdapter listAdapter;
 
     @Override
     public void onStart(Intent intent) {
@@ -48,13 +45,12 @@ public class CountryAbilitySlice extends AbilitySlice {
     }
 
     private void initView() {
-        itemList = new ArrayList<>();
-        for (String personName : countries) {
-            Item item = new Item();
-            item.setName(personName);
+        List<Item> itemList = new ArrayList<>();
+        for (String personName : COUNTRIES_NAME) {
+            Item item = new Item(personName);
             itemList.add(item);
         }
-        listAdapter = new ListAdapter(this, COUNTRIES);
+        ListAdapter listAdapter = new ListAdapter(this, COUNTRIES);
         listAdapter.setItem(itemList);
         ListContainer listContainer = (ListContainer) findComponentById(ResourceTable.Id_recyclerview);
         listContainer.setItemProvider(listAdapter);

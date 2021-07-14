@@ -9,8 +9,8 @@
 
     <com.github.ivbaranov.mli.MaterialLetterIcon
         ohos:id="$+id:icon"
-        ohos:width="70vp"
-        ohos:height="70vp"
+        ohos:width="100vp"
+        ohos:height="100vp"
         ohos:margin="10vp"
         ohos:right_margin="20vp"
         app:mli_letters_number="3"
