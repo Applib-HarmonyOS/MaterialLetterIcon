@@ -74,8 +74,8 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
     private static final String MLI_ROUND_RECT_RX = "mli_round_rect_rx";
     private static final String MLI_ROUND_RECT_RY = "mli_round_rect_ry";
     private static final String MLI_LETTER = "mli_letter";
-    private static final int COEFFICIENT_WIDTH = 0.5;
-    private static final int COEFFICIENT_HEIGHT = 0.9;
+    private static final float COEFFICIENT_WIDTH = 0.5;
+    private static final float COEFFICIENT_HEIGHT = 0.9;
 
     private Context context;
     private Paint mShapePaint;
