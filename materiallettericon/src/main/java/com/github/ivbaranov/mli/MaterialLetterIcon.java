@@ -74,6 +74,8 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
     private static final String MLI_ROUND_RECT_RX = "mli_round_rect_rx";
     private static final String MLI_ROUND_RECT_RY = "mli_round_rect_ry";
     private static final String MLI_LETTER = "mli_letter";
+    private static final int COEFFICIENT_WIDTH = 0.5;
+    private static final int COEFFICIENT_HEIGHT = 0.9;
 
     private Context context;
     private Paint mShapePaint;
@@ -678,10 +680,10 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
         mShapePaint.setStyle(Paint.Style.FILL_STYLE);
         Path triangle = new Path();
         triangle.setFillType(Path.FillType.EVEN_ODD);
-        triangle.moveTo((float) 0.5 * width, 0);
-        triangle.lineTo(0, (float) 0.9 * height);
-        triangle.lineTo(width, (float) 0.9 * height);
-        triangle.lineTo((float) 0.5 * width, 0);
+        triangle.moveTo((float) COEFFICIENT_WIDTH * width, 0);
+        triangle.lineTo(0, (float) COEFFICIENT_HEIGHT * height);
+        triangle.lineTo(width, (float) COEFFICIENT_HEIGHT * height);
+        triangle.lineTo((float) COEFFICIENT_WIDTH * width, 0);
         canvas.drawPath(triangle, mShapePaint);
     }
 
