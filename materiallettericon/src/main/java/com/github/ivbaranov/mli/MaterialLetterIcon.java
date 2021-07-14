@@ -18,31 +18,6 @@ import com.github.ivbaranov.mli.utils.Utils;
  */
 public class MaterialLetterIcon extends Component implements Component.DrawTask {
     /**
-     * Use Shape.CIRCLE.
-     *
-     * @deprecated Use Shape.CIRCLE.
-     */
-    @Deprecated public static final int SHAPE_CIRCLE = 0;
-    /**
-     * Use Shape.RECT.
-     *
-     * @deprecated Use Shape.RECT.
-     */
-    @Deprecated public static final int SHAPE_RECT = 1;
-    /**
-     * Use Shape.ROUND_RECT.
-     *
-     * @deprecated Use Shape.ROUND_RECT.
-     */
-    @Deprecated public static final int SHAPE_ROUND_RECT = 2;
-    /**
-     * Use Shape.TRIANGLE.
-     *
-     * @deprecated Use Shape.TRIANGLE.
-     */
-    @Deprecated public static final int SHAPE_TRIANGLE = 3;
-
-    /**
      * Shape of icon.
      */
     public enum Shape {
@@ -148,19 +123,6 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
      */
     public void setBorderSize(int borderSize) {
         this.mBorderSize = borderSize;
-        invalidate();
-    }
-
-    /**
-     * SetShapeType.
-     *
-     * @deprecated Sets shape type. Please use {@code setShapeType(Shape shapeType)} instead.
-     * @param type one of shapes to draw: {@code MaterialLetterIcon.SHAPE_CIRCLE}, {@code
-     * MaterialLetterIcon.SHAPE_RECT}, {@code MaterialLetterIcon.SHAPE_ROUND_RECT}, {@code
-     * MaterialLetterIcon.SHAPE_TRIANGLE}
-     */
-    @Deprecated public void setShapeType(int type) {
-        this.mShapeType = Shape.values()[0];
         invalidate();
     }
 
@@ -379,18 +341,6 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
 
         public Builder shapeColor(Color color) {
             this.mShapeColor = color;
-            return this;
-        }
-
-        /**
-         * ShapeType to be used.
-         *
-         * @deprecated Sets shape type. Please use {@code ShapeType(Shape shapeType)} instead.
-         * @param type type
-         * @return Builder
-         */
-        @Deprecated public Builder shapeType(int type) {
-            this.mShapeType = Shape.values()[0];
             return this;
         }
 
