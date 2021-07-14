@@ -18,12 +18,12 @@ package com.github.ivbaranov.mli.example;
 
 import static org.junit.Assert.*;
 import static java.lang.Math.abs;
-import com.github.ivbaranov.mli.MaterialLetterIcon;
 import ohos.aafwk.ability.delegation.AbilityDelegatorRegistry;
 import ohos.agp.components.Attr;
 import ohos.agp.components.AttrSet;
 import ohos.agp.utils.Color;
 import ohos.app.Context;
+import com.github.ivbaranov.mli.MaterialLetterIcon;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Optional;
