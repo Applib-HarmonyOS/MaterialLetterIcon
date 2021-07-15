@@ -36,6 +36,7 @@ public class ListAdapter extends BaseItemProvider {
     private static final int DEFAULT_LETTERS_NUMBER = 1;
     private static final int CONTACTS_LETTERS_NUMBER = 1;
     private static final int COUNTRIES_LETTERS_NUMBER = 3;
+    private static final int COUNTRIES_LETTERS_SIZE = 25;
 
     private int mType;
     private Context context;
@@ -82,14 +83,16 @@ public class ListAdapter extends BaseItemProvider {
         switch (mType) {
             case COUNTRIES:
                 viewHolder.placeIcon.setLettersNumber(COUNTRIES_LETTERS_NUMBER);
+                viewHolder.placeIcon.setShapeType(MaterialLetterIcon.Shape.RECT);
+                viewHolder.placeIcon.setLetterSize(COUNTRIES_LETTER_SIZE);
                 break;
             case CONTACTS:
                 viewHolder.placeIcon.setLettersNumber(CONTACTS_LETTERS_NUMBER);
+                viewHolder.placeIcon.setShapeType(MaterialLetterIcon.Shape.CIRCLE);
                 break;
             default:
                 viewHolder.placeIcon.setLettersNumber(DEFAULT_LETTERS_NUMBER);
         }
-        viewHolder.placeIcon.setShapeType(MaterialLetterIcon.Shape.TRIANGLE);
         viewHolder.placeIcon.setShapeColor(colors[index % colors.length]);
         viewHolder.placeName.setText(itemList.get(index).getName());
         viewHolder.placeIcon.setLetter(itemList.get(index).getName());
