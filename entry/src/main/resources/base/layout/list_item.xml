@@ -14,6 +14,7 @@
         ohos:margin="10vp"
         ohos:right_margin="20vp"
         app:mli_letters_number="3"
+        app:mli_letter_size="40"
         />
 
     <TextField

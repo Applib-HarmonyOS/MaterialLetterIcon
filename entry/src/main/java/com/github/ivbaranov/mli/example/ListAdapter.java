@@ -36,12 +36,12 @@ public class ListAdapter extends BaseItemProvider {
     private static final int DEFAULT_LETTERS_NUMBER = 1;
     private static final int CONTACTS_LETTERS_NUMBER = 1;
     private static final int COUNTRIES_LETTERS_NUMBER = 3;
+    private static final int COUNTRIES_LETTERS_SIZE = 25;
 
     private int mType;
     private Context context;
     private List<Item> itemList;
-    private ItemClickListener clickListener;
-    private Color colors[] = {Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.GRAY};
+    private Color[] colors = {Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.GRAY};
 
     /**
      * ItemAdapter.
@@ -83,9 +83,12 @@ public class ListAdapter extends BaseItemProvider {
         switch (mType) {
             case COUNTRIES:
                 viewHolder.placeIcon.setLettersNumber(COUNTRIES_LETTERS_NUMBER);
+                viewHolder.placeIcon.setShapeType(MaterialLetterIcon.Shape.RECT);
+                viewHolder.placeIcon.setLetterSize(COUNTRIES_LETTERS_SIZE);
                 break;
             case CONTACTS:
                 viewHolder.placeIcon.setLettersNumber(CONTACTS_LETTERS_NUMBER);
+                viewHolder.placeIcon.setShapeType(MaterialLetterIcon.Shape.CIRCLE);
                 break;
             default:
                 viewHolder.placeIcon.setLettersNumber(DEFAULT_LETTERS_NUMBER);

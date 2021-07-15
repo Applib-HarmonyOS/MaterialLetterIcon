@@ -31,16 +31,13 @@ import java.util.List;
 public class ContactAbilitySlice extends AbilitySlice {
 
     private static final int CONTACTS = 1;
-    private static final String[] contacts = {
-            "Alane Avey", "Belen Brewster", "Brandon Brochu", "Carli Carrol", "Della Delrio",
-            "Esther Echavarria", "Etha Edinger", "Felipe Flecha", "Ilse Island", "Kecia Keltz",
-            "Lourie Lucas", "Lucille Leachman", "Mandi Mcqueeney", "Murray Matchett", "Nadia Nero",
-            "Nannie Nipp", "Ozella Otis", "Pauletta Poehler", "Roderick Rippy", "Sherril Sager",
-            "Taneka Tenorio", "Treena Trentham", "Ulrike Uhlman", "Virgina Viau", " Willis Wysocki "
+    private static final String[] CONTACTS_NAME = {
+        "Alane Avey", "Belen Brewster", "Brandon Brochu", "Carli Carrol", "Della Delrio",
+        "Esther Echavarria", "Etha Edinger", "Felipe Flecha", "Ilse Island", "Kecia Keltz",
+        "Lourie Lucas", "Lucille Leachman", "Mandi Mcqueeney", "Murray Matchett", "Nadia Nero",
+        "Nannie Nipp", "Ozella Otis", "Pauletta Poehler", "Roderick Rippy", "Sherril Sager",
+        "Taneka Tenorio", "Treena Trentham", "Ulrike Uhlman", "Virgina Viau", " Willis Wysocki "
     };
-
-    private List<Item> itemList;
-    private ListAdapter listAdapter;
 
     @Override
     public void onStart(Intent intent) {
@@ -50,13 +47,12 @@ public class ContactAbilitySlice extends AbilitySlice {
     }
 
     private void initView() {
-        itemList = new ArrayList<>();
-        for (String personName : contacts) {
-            Item item = new Item();
-            item.setName(personName);
+        List<Item> itemList = new ArrayList<>();
+        for (String personName : CONTACTS_NAME) {
+            Item item = new Item(personName);
             itemList.add(item);
         }
-        listAdapter = new ListAdapter(this, CONTACTS);
+        ListAdapter listAdapter = new ListAdapter(this, CONTACTS);
         listAdapter.setItem(itemList);
         ListContainer listContainer = (ListContainer) findComponentById(ResourceTable.Id_recyclerview);
         listContainer.setItemProvider(listAdapter);
