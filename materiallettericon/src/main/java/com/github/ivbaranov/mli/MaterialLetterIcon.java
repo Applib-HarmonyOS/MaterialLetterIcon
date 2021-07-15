@@ -25,6 +25,10 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
     }
 
     private static final Shape DEFAULT_SHAPE = Shape.CIRCLE;
+    public static final int SHAPE_CIRCLE = 0;
+    public static final int SHAPE_RECT = 1;
+    public static final int SHAPE_ROUND_RECT = 2;
+    public static final int SHAPE_TRIANGLE = 3;
     private static final Color DEFAULT_SHAPE_COLOR = Color.BLACK;
     private static final int DEFAULT_BORDER_SIZE = 2;
     private static final boolean DEFAULT_BORDER = false;
@@ -123,6 +127,18 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
      */
     public void setBorderSize(int borderSize) {
         this.mBorderSize = borderSize;
+        invalidate();
+    }
+
+    /**
+     * SetShapeType.
+     *
+     * @param type one of shapes to draw: {@code MaterialLetterIcon.SHAPE_CIRCLE}, {@code
+     * MaterialLetterIcon.SHAPE_RECT}, {@code MaterialLetterIcon.SHAPE_ROUND_RECT}, {@code
+     * MaterialLetterIcon.SHAPE_TRIANGLE}
+     */
+    public void setShapeType(int type) {
+        this.mShapeType = Shape.values()[0];
         invalidate();
     }
 
@@ -341,6 +357,17 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
 
         public Builder shapeColor(Color color) {
             this.mShapeColor = color;
+            return this;
+        }
+
+        /**
+         * ShapeType to be used.
+         *
+         * @param type type
+         * @return Builder
+         */
+        public Builder shapeType(int type) {
+            this.mShapeType = Shape.values()[type];
             return this;
         }
 
