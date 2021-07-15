@@ -84,7 +84,7 @@ public class ListAdapter extends BaseItemProvider {
             case COUNTRIES:
                 viewHolder.placeIcon.setLettersNumber(COUNTRIES_LETTERS_NUMBER);
                 viewHolder.placeIcon.setShapeType(MaterialLetterIcon.Shape.RECT);
-                viewHolder.placeIcon.setLetterSize(COUNTRIES_LETTER_SIZE);
+                viewHolder.placeIcon.setLetterSize(COUNTRIES_LETTERS_SIZE);
                 break;
             case CONTACTS:
                 viewHolder.placeIcon.setLettersNumber(CONTACTS_LETTERS_NUMBER);
