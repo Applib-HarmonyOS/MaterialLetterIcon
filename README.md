@@ -5,6 +5,17 @@ Material letter icon replicates contacts icon view with options for several shap
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Contacts](images/contacts.png)
 
+## Variations
+
+![Countries](images/contacts_rect_two.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![Contacts](images/countries_circle_two.png)
+
+
+![Countries](images/countries_rect_three.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![Contacts](images/countries_triangle_one.png)
+
 ## Source
 The code in this repository was inspired from [IvBaranov/MaterialLetterIcon - Release 0.2.4](https://github.com/IvBaranov/MaterialLetterIcon). 
 We are very thankful to Ivan Baranov. 
