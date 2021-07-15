@@ -656,7 +656,6 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
         mShapePaint.setColor(mShapeColor);
         mShapePaint.setStyle(Paint.Style.FILL_STYLE);
         Path triangle = new Path();
-        triangle.setFillType(Path.FillType.EVEN_ODD);
         triangle.moveTo((float) COEFFICIENT_WIDTH * width, 0);
         triangle.lineTo(0, (float) COEFFICIENT_HEIGHT * height);
         triangle.lineTo(width, (float) COEFFICIENT_HEIGHT * height);
