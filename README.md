@@ -1,6 +1,13 @@
 # MaterialLetterIcon
 Material letter icon replicates contacts icon view with options for several shapes, backgrounds, fonts and sizes.
 
+[![Build](https://github.com/applibgroup/MaterialLetterIcon/actions/workflows/main.yml/badge.svg)](https://github.com/applibgroup/MaterialLetterIcon/actions/workflows/main.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=applibgroup_MaterialLetterIcon&metric=alert_status)](https://sonarcloud.io/dashboard?id=applibgroup_MaterialLetterIcon)
+
+## Source
+The code in this repository was inspired from [IvBaranov/MaterialLetterIcon - Release 0.2.4](https://github.com/IvBaranov/MaterialLetterIcon). 
+We are very thankful to Ivan Baranov. 
+
 ![Countries](images/countries.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Contacts](images/contacts.png)
@@ -16,9 +23,6 @@ Material letter icon replicates contacts icon view with options for several shap
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Contacts](images/countries_triangle_one.png)
 
-## Source
-The code in this repository was inspired from [IvBaranov/MaterialLetterIcon - Release 0.2.4](https://github.com/IvBaranov/MaterialLetterIcon). 
-We are very thankful to Ivan Baranov. 
 
 ## Features
 1. Shape Color: It can be used to change the color of the icon.
