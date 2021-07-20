@@ -29,11 +29,11 @@ public class Utils {
      * @param fontfamily fontfamily
      * @return font
      */
-    public static Font getFont(Context context, String fontfamily) {
+    public static Font getFont(Context context, String filePath, String fontfamily) {
         byte[] buffer = null;
         int bytesRead = 0;
         File file = new File(context.getCacheDir(), fontfamily);
-        RawFileEntry rawFileEntry = context.getResourceManager().getRawFileEntry(fontfamily);
+        RawFileEntry rawFileEntry = context.getResourceManager().getRawFileEntry(filePath);
         try (Resource resource = rawFileEntry.openRawFile();
              FileOutputStream fileOutputStream = new FileOutputStream(file);
              RawFileDescriptor rawFileDescriptor = rawFileEntry.openRawFileDescriptor()) {
