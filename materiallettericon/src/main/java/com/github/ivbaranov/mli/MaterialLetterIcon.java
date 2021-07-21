@@ -37,6 +37,7 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
     private static final int DEFAULT_LETTERS_NUMBER = 1;
     private static final Color DEFAULT_LETTER_COLOR = Color.WHITE;
     private static final String DEFAULT_FONT_PATH = "resources/rawfile/fonts/Roboto-Light.ttf";
+    private static final String DEFAULT_FONT_FAMILY = "Roboto-Light.ttf";
     private static final int DEFAULT_INITIALS_NUMBER = 2;
     private static final boolean DEFAULT_INITIALS_STATE = false;
     private static final float DEFAULT_ROUND_RECT_RADIUS = 2;
@@ -352,7 +353,7 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
 
         public Builder(Context context) {
             this.context = context;
-            this.mLetterTypeface = Utils.getFont(context, DEFAULT_FONT_PATH);
+            this.mLetterTypeface = Utils.getFont(context, DEFAULT_FONT_PATH, DEFAULT_FONT_FAMILY);
         }
 
         public Builder shapeColor(Color color) {
@@ -501,7 +502,7 @@ public class MaterialLetterIcon extends Component implements Component.DrawTask 
         mBorderPaint.setAntiAlias(true);
         mLetterPaint = new Paint();
         mLetterPaint.setAntiAlias(true);
-        mLetterPaint.setFont(Utils.getFont(context, DEFAULT_FONT_PATH));
+        mLetterPaint.setFont(Utils.getFont(context, DEFAULT_FONT_PATH, DEFAULT_FONT_FAMILY));
         if (attrs != null) {
             initAttributes(attrs);
         }
