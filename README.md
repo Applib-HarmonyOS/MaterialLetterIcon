@@ -52,6 +52,14 @@ We are very thankful to Ivan Baranov.
 	}
 
 ```
+3. For using MaterialLetterIcon from a remote repository in separate application, add the below dependencies in entry/build.gradle file.
+```
+	dependencies {
+		implementation 'dev.applibgroup:materiallettericon:1.0.0'
+		testCompile 'junit:junit:4.12'
+	}
+
+```
 ## Usage
 Declare in XML (see xml attributes below for customization):
 
